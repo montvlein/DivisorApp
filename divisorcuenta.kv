@@ -2,7 +2,6 @@
 
 <DivisorCuenta>:
     f_cantidad: cantPersonas
-    btn_listar: listar
     GridLayout:
         cols: 2
         padding: 10
@@ -12,14 +11,22 @@
             text: 'Cantidad de personas:'
         TextInput:
             id: cantPersonas
+            text: "Ingresar el numero de personas que participan en la división"
             multiline: True
             password: False
    
     GridLayout:
         rows: 1
-        padding: 50
+        padding: 10
         Button:
-            id: listar
             text: 'listar'
-            on_press: root.calcularPersonas(cantPersonas)
-            backgound_color: [0.5,0.5,0.5,0.5]
+            on_press: root.listarPersonas(cantPersonas)
+
+    GridLayout:
+        cols: 3
+        Label:
+            id: total
+            text: ''
+        Label:
+            id: promedio
+            text: ''
