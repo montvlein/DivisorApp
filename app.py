@@ -28,21 +28,23 @@ class DivisorCuenta(GridLayout):
     def listarPersonas(self, arg): # evalua el valor ingresado para agregar los input de las personas que participan
         try:
             num = int(arg.text)
-            for n in range(num):
-                self.add_widget(Label(text='nombre'))
-                self.nombre = TextInput(multiline=False)
-                self.add_widget(self.nombre)
-                
-                self.add_widget(Label(text='aporte'))
-                self.aporte = TextInput(multiline=False)
-                self.add_widget(self.aporte)
+            if num>1:
+                for n in range(num):
+                    self.add_widget(Label(text='nombre'))
+                    self.nombre = TextInput(multiline=False)
+                    self.add_widget(self.nombre)
+                    
+                    self.add_widget(Label(text='aporte'))
+                    self.aporte = TextInput(multiline=False)
+                    self.add_widget(self.aporte)
 
-                self.names[self.nombre] = self.aporte
-                            
-            self.btndividir = Button(text="dividir")    
-            self.add_widget(self.btndividir)
-            self.btndividir.bind(on_press = self.calcularDivision)
-                            
+                    self.names[self.nombre] = self.aporte
+                                
+                self.btndividir = Button(text="dividir")    
+                self.add_widget(self.btndividir)
+                self.btndividir.bind(on_press = self.calcularDivision)
+            else:
+                self.ids.cantPersonas.text = "ingresar un valor mayor a 1"             
         except:
             self.ids.cantPersonas.text = "favor de ingresar un número"
 
